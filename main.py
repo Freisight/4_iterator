@@ -4,7 +4,8 @@ nested_list = [
 	[1, 2, None],
 ]
 
-
+# 1
+ 
 class FlatIterator:
     def __init__(self, spisok):
         self.spisok = spisok
@@ -31,6 +32,17 @@ class FlatIterator:
 for item in FlatIterator(nested_list):
 	print(item)
 
+flat_list = [item for item in FlatIterator(nested_list)]
+print(flat_list)
+
+# 2 
 
 def flat_generator(spisok):
-    pass
+    spisok = [ob for item in spisok for ob in item]
+    count = 0
+    while count < len(spisok):
+        yield spisok[count]
+        count += 1
+
+for item in  flat_generator(nested_list):
+	print(item)
